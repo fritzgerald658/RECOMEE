@@ -54,7 +54,7 @@ def predict_position(request):
         prediction_probabilities = nb_model.predict_proba(user_input_vec)[0]
 
         # Get the indices of the top three predictions
-        top_three_indices = prediction_probabilities.argsort()[-3:][::-1]
+        top_three_indices = prediction_probabilities.argsort()[-4:][::-1]
 
         # Get the top three predictions and their probabilities
         top_three_predictions = nb_model.classes_[top_three_indices]
@@ -75,6 +75,7 @@ def predict_position(request):
         top_one = {'first_career' : top_three_predictions[0].upper(), 'first_probability': '{:.2f}'.format(top_three_probabilities[0] * 100)}
         top_two = {'second_career' : top_three_predictions[1].upper(), 'second_probability' : '{:.2f}'.format(top_three_probabilities[1] * 100)}
         top_three = {'third_career' : top_three_predictions[2].upper(), 'third_probability' : '{:.2f}'.format(top_three_probabilities[2] * 100)}
+        top_four = {'fourth_career' : top_three_predictions[3].upper(), 'fourth_probability' : '{:.2f}'.format(top_three_probabilities[3] * 100)}
 
         if top_three_probabilities[0] < 0.01:
             # Redirect to another page or render a specific template
@@ -82,7 +83,7 @@ def predict_position(request):
         
 
         # Combining results into one dictionary    
-        combined_results = {**top_one, **top_two, **top_three}
+        combined_results = {**top_one, **top_two, **top_three, **top_four}
         
         # Pass the top three results and all PredictionResult instances to the template
         return render(request,'app_result.html', {
