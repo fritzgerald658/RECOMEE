@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'history_page.css' %}">
+</head>
+<body>
+    <h1>Input Log and Predictions</h1>
+    <p>Track your past inputs and view corresponding predictions to analyze trends and insights.</p>
+    {% for user_entry in user_data %}
+<div class="user-entry">
+    <p><strong>Course:</strong> {{ user_entry.user_course }}</p>
+    <p><strong>Skills:</strong> {{ user_entry.user_skills }}</p>
+    <p><strong>Interest:</strong> {{ user_entry.user_interest }}</p>
+    <p><strong>Industry:</strong> {{ user_entry.user_industry }}</p>
+
+    {% for prediction_result in prediction_results %}
+<div class="prediction-result">
+    <h3>Prediction Results:</h3>
+    <p><strong>Career One:</strong> {{ prediction_result.career_one }}</p>
+    <p><strong>Career Two:</strong> {{ prediction_result.career_two }}</p>
+    <p><strong>Career Three:</strong> {{ prediction_result.career_three }}</p>
+    <p><strong>Probability One:</strong> {{ prediction_result.probability_one }}%</p>
+    <p><strong>Probability Two:</strong> {{ prediction_result.probability_two }}%</p>
+    <p><strong>Probability Three:</strong> {{ prediction_result.probability_three }}%</p>
+</div>
+{% endfor %}
+</div>
+{% endfor %}
+
+
+    
+</body>
+</html>
+
