@@ -77,8 +77,8 @@ def predict_position(request):
         top_three = {'third_career' : top_three_predictions[2].upper(), 'third_probability' : '{:.2f}'.format(top_three_probabilities[2] * 100)}
         top_four = {'fourth_career' : top_three_predictions[3].upper(), 'fourth_probability' : '{:.2f}'.format(top_three_probabilities[3] * 100)}
 
+        
         if top_three_probabilities[0] < 0.01:
-            # Redirect to another page or render a specific template
             return render(request, 'index.html')
         
 
@@ -87,7 +87,7 @@ def predict_position(request):
         
         # Pass the top three results and all PredictionResult instances to the template
         return render(request,'app_result.html', {
-    **combined_results,
+        **combined_results,
     'top_three_predictions': top_three_predictions,
     'top_three_probabilities': top_three_probabilities, 
     # Include prediction results context variable
