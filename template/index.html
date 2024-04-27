@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=h, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=h, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>THIS IS THE ERROR / NO RESULT PAGE.</h1>
-    <h2>Under COnstruction</h2>
-    <h1>Hello</h1>
-</body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'no_results_page.css' %}" />
+  </head>
+  <body>
+    <section class="section-one">
+      <div class="center-container">
+        <div class="text-container">
+          <p>
+            <span style="font-size: 40px; font-weight: 900"
+              >Apologies but we couldn't find  </span
+            ><br />
+            <span style="font-size: 35px; font-weight: 900">
+              any related career based on your input. </span
+            ><br /> <hr style="height: 5px; background-color: black;">
+            <span
+              style="
+                color: #0aa085;
+                font-size: 20px;
+                text-decoration: underline;
+                cursor: pointer;
+              "
+              ><a href="{% url 'predict_position' %}">Would you like to try different search terms?</a></span
+            >
+          </p>
+        </div>
+        <div class="img-container">
+          <img src="{% static 'assets/noresults.svg' %}" alt="" />
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
