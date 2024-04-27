@@ -8,28 +8,37 @@
     <link rel="stylesheet" href="{% static 'no_results_page.css' %}" />
   </head>
   <body>
+    <header id="nav-header">
+      <a href="#section-one">
+          <img src="static/assets/logo.png" alt="logo">
+      </a>
+      <nav id="nav-links">
+        <form method = 'post' action= "{% url 'get_started' %}" name="get_started_form">
+          {% csrf_token %}
+          <button id="call-to-action" title="Go back to previous page" type="submit">Back</a>
+      </nav>
+  </header>
     <section class="section-one">
       <div class="center-container">
         <div class="text-container">
           <p>
-            <span style="font-size: 32px; font-weight: 500"
-              >Apologies but <br>we couldn't find </span
+            <span style="font-size: 22px; font-weight: 500"
+              >❌Apologies but we couldn't find </span
             ><br />
-            <span style="font-size: 32px; font-weight: 500">
-              any related career <br>based on your input. </span
-            ><br /> 
+            <span style="font-size: 22px; font-weight: 500">
+              any related career based on your input. </span
+            ><br> 
             <span
               style="
                 color: #0aa085;
-                font-size: 20px;
+                font-size: 8px;
                 cursor: pointer;
-                
-              "
-              ><a href="{% url 'predict_position' %}" style="text-decoration: none;">Kindly try different search terms.</a></span
-            >
-          </p>
-        </div class="image-container">
-          <img src="{% static 'assets/noresults.svg' %}" alt="">
+              "><a href="{% url 'predict_position' %}" style="text-decoration: none;">Kindly try different search terms.</a></span>
+            </p>
+        </div>
+        <div>
+          <img src="{% static 'assets/jobless.gif' %}" alt="" style="margin: 0;">
+        </div>
       </div>
     </section>
   </body>
