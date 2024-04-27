@@ -180,9 +180,6 @@ body {
 /* section 3 styling */
 #section-three{
     color: #333C4D;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 #section-three h2{
