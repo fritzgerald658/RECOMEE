@@ -78,7 +78,7 @@ def predict_position(request):
         top_four = {'fourth_career' : top_three_predictions[3].upper(), 'fourth_probability' : '{:.2f}'.format(top_three_probabilities[3] * 100)}
 
         
-        if top_three_probabilities[0] < 0.01:
+        if top_three_probabilities[0] < 0.03:
             return render(request, 'index.html')
         
 
@@ -103,5 +103,4 @@ def display_data(request):
 
 def no_results(request):
     return render(request, 'index.html' )
-
 
