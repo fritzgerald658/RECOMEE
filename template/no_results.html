@@ -10,7 +10,7 @@
   <body>
     <header id="nav-header">
       <a href="#section-one">
-          <img src="static/assets/logo.png" alt="logo">
+          <img src="{% static 'assets/logo.png' %}" alt="logo">
       </a>
       <nav id="nav-links">
         <form method = 'post' action= "{% url 'get_started' %}" name="get_started_form">
@@ -27,7 +27,7 @@
             ><br />
             <span style="font-size: 28px; font-weight: 500">
               any related career based on your input. </span
-            ><br> 
+            ><br> <br>
             <span
               style="
                 color: #0aa085;

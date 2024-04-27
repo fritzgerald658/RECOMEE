@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="{% static 'history_page.css' %}">
 </head>
 <body>
+    <nav id="nav-links">
+        <form method = 'post' action= "{% url 'get_started' %}" name="get_started_form">
+          {% csrf_token %}
+          <button id="call-to-action" title="Go back to previous page" type="submit">Back</a>
+      </nav>
+      
     <h1>Input Log and Predictions</h1>
     <p>Track your past inputs and view corresponding predictions to analyze trends and insights.</p>
 {% for user_entry in user_data reversed %}
