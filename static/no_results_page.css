@@ -16,17 +16,19 @@ body {
 .center-container {
   display: flex;
   flex-direction: row;
-  min-height: 250px;
-  max-width: 400px;
+  min-height: 40vh;
+  max-width: 80vw;
   background-color: white;
-  padding: 25px 50px;
-  justify-content: center;
-  align-items: center;
-  max-width: 40vw;
+  padding: 15px;
   border:2px solid #0aa085;
 }
 
 .text-container {
+  margin: 0px;
   font-family: "Poppins", sans-serif;
   text-align: left;
+}
+
+.image-container {
+  padding: 50px;
 }

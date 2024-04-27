@@ -79,7 +79,7 @@ def predict_position(request):
 
         
         if top_three_probabilities[0] < 0.03:
-            return render(request, 'index.html')
+            return render(request, 'no_results.html')
         
 
         # Combining results into one dictionary    
