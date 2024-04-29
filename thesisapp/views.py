@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from joblib import load
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from .models import UserHistory, PredictionResult
+from .models import PredictionResult
 
 
 
@@ -11,22 +11,10 @@ def get_started(request):
     if request.method == 'POST':
         # Get the username from the form
         username = request.POST.get('username')
-
-        user = UserHistory(username=username)
-        user.save()
         # Pass the username to the template
         return render(request, 'get_user_input.html',)
 
     return render(request, 'get_started.html')
-
-
-def display_data(request):
-    # Assuming both models are imported
-    user_data = UserHistory.objects.all()
-    prediction_results = PredictionResult.objects.all()
-
-    return render(request, 'your_template.html', {'user_data': user_data, 'prediction_results': prediction_results})
-
 
 
 def predict_position(request):
@@ -36,9 +24,6 @@ def predict_position(request):
         user_skills = request.POST.get('skills')
         user_interest = request.POST.get('interest')
         user_industry = request.POST.get('industry')
-
-        # Create a UserHistory instance with user input
-        user = UserHistory.objects.create(user_course=user_course, user_skills=user_skills, user_interest=user_interest, user_industry=user_industry)
 
         # Combine user input into a single string
         user_input_combined = ' '.join([user_course, user_skills, user_interest, user_industry])
@@ -84,7 +69,6 @@ def predict_position(request):
 
         # Combining results into one dictionary    
         combined_results = {**top_one, **top_two, **top_three, **top_four}
-        request.session['combined_results'] = combined_results
         # Pass the top three results and all PredictionResult instances to the template
         return render(request,'app_result.html', {
         **combined_results,
@@ -97,24 +81,10 @@ def predict_position(request):
 
 
 def display_data(request):
-    user_data = UserHistory.objects.all()
     prediction_results = PredictionResult.objects.all()
-    return render(request, 'history_page.html', {'user_data': user_data, 'prediction_results': prediction_results})
+    return render(request, 'history_page.html', {'prediction_results': prediction_results})
 
 def no_results(request):
     return render(request, 'index.html' )
 
 
-def results_page(request):
-    # Retrieve combined_results from session
-    combined_results = request.session.get('combined_results', {})
-    
-    if request.method == 'POST':
-        # Your POST handling logic here
-        
-        return render(request, 'app_result.html', {'combined_results': combined_results})
-    else:
-        # Render the results page with combined_results
-        return render(request, 'app_result.html', {'combined_results': combined_results})
-
-    
