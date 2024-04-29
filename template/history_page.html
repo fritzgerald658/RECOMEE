@@ -9,11 +9,11 @@
 </head>
 <body>
     <button id="back_btn" title="Go back to previous page" >Back</Button>
-    <h1>Input Log and Predictions</h1>
-    <p>Track your past inputs and view corresponding predictions to analyze trends and insights.</p>
+    <h1>Caree Predictions</h1>
+    <p></p>
 {% for prediction_result in prediction_results reversed %}
-    <div class="user-entry">
-        <h3>Prediction Results:</h3>
+    <div class="prediction_result">
+        <h3>Career Prediction Results:</h3>
         <p><strong>Career One:</strong> {{ prediction_result.career_one }}</p>
         <p><strong>Career Two:</strong> {{ prediction_result.career_two }}</p>
         <p><strong>Career Three:</strong> {{ prediction_result.career_three }}</p>
