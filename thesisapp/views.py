@@ -84,7 +84,7 @@ def predict_position(request):
 
         # Combining results into one dictionary    
         combined_results = {**top_one, **top_two, **top_three, **top_four}
-        
+        request.session['combined_results'] = combined_results
         # Pass the top three results and all PredictionResult instances to the template
         return render(request,'app_result.html', {
         **combined_results,
@@ -104,3 +104,17 @@ def display_data(request):
 def no_results(request):
     return render(request, 'index.html' )
 
+
+def results_page(request):
+    # Retrieve combined_results from session
+    combined_results = request.session.get('combined_results', {})
+    
+    if request.method == 'POST':
+        # Your POST handling logic here
+        
+        return render(request, 'app_result.html', {'combined_results': combined_results})
+    else:
+        # Render the results page with combined_results
+        return render(request, 'app_result.html', {'combined_results': combined_results})
+
+    

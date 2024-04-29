@@ -9,9 +9,7 @@
 </head>
 <body>
     <nav id="nav-links">
-        <form method = 'post' action= "{% url 'get_started' %}" name="get_started_form">
-          {% csrf_token %}
-          <button id="call-to-action" title="Go back to previous page" type="submit">Back</a>
+          <button id="back_button" title="Go back to previous page" type="submit">Back</a>
       </nav>
       
     <h1>Input Log and Predictions</h1>
@@ -37,5 +35,11 @@
 
     
 </body>
+
+<script>
+    document.getElementsById("back_button").addEventListener("click", function() {
+        window.history.back();
+    });
+</script>
 </html>
 
