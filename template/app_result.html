@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    <link rel="stylesheet" href="{% static  'app_result.css' %}">
-    <link rel="stylesheet" href="{% static 'global_styling.css'%}">
+    <link rel="stylesheet" href="{% static  'app_result.css' %}" />
+    <link rel="stylesheet" href="{% static 'global_styling.css'%}" />
     <title>Results</title>
-</head>
-<body>
+  </head>
+  <body>
+    {% include 'preloader.html' %}
     <header id="nav-header">
-        <a href="#">
-            <img src="{% static 'assets/logo.png' %}" alt="logo">
-        </a>
-        <nav id="nav-links">
-            <a href="{% url 'display_data' %}">History</a>
-            <a href="{% url 'predict_position' %}" id="call-to-action">Go Back</a>
-        </nav>
+      <a href="#">
+        <img src="{% static 'assets/logo.png' %}" alt="logo" />
+      </a>
+      <nav id="nav-links">
+        <a href="{% url 'display_data' %}">History</a>
+        <a href="{% url 'predict_position' %}" id="call-to-action">Go Back</a>
+      </nav>
     </header>
 
     <section id="results-section">
-        <h1>Top 3 Personalized Career Matches</h1>
-        <div class="results_container">
-            <div class="results" id="result-one">
-                <h4>{{ first_career }}</h4>
-            </div>
-            <div class="results" id="result-two">
-                <h4>{{second_career}}</h4>
-            </div>
-            <div class="results" id="result-three">
-                <h4>{{third_career}}</h4>
-            </div>
+      <h1>Top 3 Personalized Career Matches</h1>
+      <div class="results_container">
+        <div class="results" id="result-one">
+          <h4>{{ first_career }}</h4>
         </div>
+        <div class="results" id="result-two">
+          <h4>{{second_career}}</h4>
+        </div>
+        <div class="results" id="result-three">
+          <h4>{{third_career}}</h4>
+        </div>
+      </div>
     </section>
     <section id="section-legend">
-        <div class="ranking-legend">
-            <div class="legend-container">
-                <div class="legend">
-                    <h6>Highly Recommended</h6>                    
-                </div>
-                <div class="legend">
-                    <h6>Recommended</h6> 
-                </div>
-                <div class="legend">
-                    <h6>Alternative Option</h6>
-                </div>
-            </div>
-            <div class="rectangle-container">
-                <div class="rectangle" id="green"></div>
-                <div class="rectangle" id="gold"></div>
-                <div class="rectangle" id="red"></div>
-            </div>
-                
+      <div class="ranking-legend">
+        <div class="legend-container">
+          <div class="legend">
+            <h6>Highly Recommended</h6>
+          </div>
+          <div class="legend">
+            <h6>Recommended</h6>
+          </div>
+          <div class="legend">
+            <h6>Alternative Option</h6>
+          </div>
         </div>
+        <div class="rectangle-container">
+          <div class="rectangle" id="green"></div>
+          <div class="rectangle" id="gold"></div>
+          <div class="rectangle" id="red"></div>
+        </div>
+      </div>
     </section>
-    
-
-</body>
+  </body>
 </html>
