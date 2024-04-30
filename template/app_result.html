@@ -23,17 +23,51 @@
     <section id="results-section">
       <h1>Top 3 Personalized Career Matches</h1>
       <div class="results_container">
-        <div class="results" id="result-one">
-          <h4>{{ first_career }}</h4>
-        </div>
-        <div class="results" id="result-two">
-          <h4>{{second_career}}</h4>
-        </div>
-        <div class="results" id="result-three">
-          <h4>{{third_career}}</h4>
-        </div>
-      </div>
+{% if first_probability > 49 %}
+    <div class="results results-green" >
+        <h4>{{ first_career }}</h4>
+    </div>
+{% elif first_probability > 14 and first_probability < 49 %}
+    <div class="results results-gold" >
+        <h4>{{ first_career }}</h4>
+    </div>
+{% else %}
+    <div class="results results-red" >
+        <h4>{{ first_career }}</h4>
+    </div>
+{% endif %}
+
+{% if second_probability > 49 %}
+    <div class="results results-green" >
+        <h4>{{ second_career }}</h4>
+    </div>
+{% elif second_probability > 14 and first_probability < 49 %}
+    <div class="results results-gold">
+      <h4></h4>
+        <h4>{{ second_career }}</h4>
+    </div>
+{% else %}
+    <div class="results results-red">
+        <h4>{{ second_career }}</h4>
+    </div>
+{% endif %}
+
+{% if third_probability > 49 %}
+    <div class="results results-green">
+        <h4>{{ third_career }}</h4>
+    </div>
+{% elif third_probability > 14 and first_probability < 49 %}
+    <div class="results results-gold">
+        <h4>{{ third_career }}</h4>
+    </div>
+{% else %}
+    <div class="results results-red">
+        <h4>{{ third_career }}</h4>
+    </div>
+{% endif %}
     </section>
+
+
     <section id="section-legend">
       <div class="ranking-legend">
         <div class="legend-container">

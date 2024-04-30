@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{% static 'global_styling.css' %}">
     <title>Get Started</title>
 </head>
+{% include 'preloader.html' %}
 <body>
+    
     <header id="nav-header">
         <a href="#section-one">
             <img src="static/assets/logo.png" alt="logo">
@@ -52,22 +54,25 @@
     <!--This section talks about the benefits of the app-->
     <section id="section-three">
         <h2>Highlighting Specific Benefits</h2>
-        <div>
-            <h4>🟩Instant Clarity</h4>
-            <p>Gain valuable insights into your strengths <br>
-               and potential, helping you make informed <br>
-               career decisions.</p>
+        <div class="content-container">
+            <div>
+                <h4>🟩Instant Clarity</h4>
+                <p>Gain valuable insights into your strengths <br>
+                   and potential, helping you make informed <br>
+                   career decisions.</p>
+            </div>
+            <div>
+                <h4>🟩Personalized Guidance</h4>
+                <p>Discover hidden career gems that align <br>
+                   perfectly with your unique qualities, beyond <br>
+                   traditional options.</p>
+            </div>
+            <div>
+                <h4>🟩Increased Decision-Making Efficiency</h4>
+                <p>Feeling overwhelmed by career choices? <br>A recommender system can streamline the process, <br> presenting a manageable list of options that align with your profile.</p>
+            </div>
         </div>
-        <div>
-            <h4>🟩Personalized Guidance</h4>
-            <p>Discover hidden career gems that align <br>
-               perfectly with your unique qualities, beyond <br>
-               traditional options.</p>
-        </div>
-        <div>
-            <h4>🟩Increased Decision-Making Efficiency</h4>
-            <p>Feeling overwhelmed by career choices? <br>A recommender system can streamline the process, <br> presenting a manageable list of options that align with your profile.</p>
-        </div>
+        
     </section>
 
     <!--this section will display potential careers that the app may offer-->

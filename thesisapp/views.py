@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from joblib import load
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from .models import PredictionResult
+from .models import UserHistory, PredictionResult
 
 
 
@@ -11,10 +11,22 @@ def get_started(request):
     if request.method == 'POST':
         # Get the username from the form
         username = request.POST.get('username')
+
+        user = UserHistory(username=username)
+        user.save()
         # Pass the username to the template
         return render(request, 'get_user_input.html',)
 
     return render(request, 'get_started.html')
+
+
+def display_data(request):
+    # Assuming both models are imported
+    user_data = UserHistory.objects.all()
+    prediction_results = PredictionResult.objects.all()
+
+    return render(request, 'your_template.html', {'user_data': user_data, 'prediction_results': prediction_results})
+
 
 
 def predict_position(request):
@@ -24,6 +36,9 @@ def predict_position(request):
         user_skills = request.POST.get('skills')
         user_interest = request.POST.get('interest')
         user_industry = request.POST.get('industry')
+
+        # Create a UserHistory instance with user input
+        user = UserHistory.objects.create(user_course=user_course, user_skills=user_skills, user_interest=user_interest, user_industry=user_industry)
 
         # Combine user input into a single string
         user_input_combined = ' '.join([user_course, user_skills, user_interest, user_industry])
@@ -63,28 +78,26 @@ def predict_position(request):
         top_four = {'fourth_career' : top_three_predictions[3].upper(), 'fourth_probability' : '{:.2f}'.format(top_three_probabilities[3] * 100)}
 
         
-        if top_three_probabilities[0] < 0.05:
+        if top_three_probabilities[0] < 0.03:
             return render(request, 'no_results.html')
         
-
+        context = {
+            'first_probability': top_three_probabilities[0]*100,
+            'second_probability': top_three_probabilities[1]*100,
+            'third_probability': top_three_probabilities[2]*100,
+        }
         # Combining results into one dictionary    
         combined_results = {**top_one, **top_two, **top_three, **top_four}
         # Pass the top three results and all PredictionResult instances to the template
-        return render(request,'app_result.html', {
-        **combined_results,
-    'top_three_predictions': top_three_predictions,
-    'top_three_probabilities': top_three_probabilities, 
-    # Include prediction results context variable
-    # Include other context variables as needed
-})
+        return render(request,'app_result.html', {**combined_results, **context})
     return render(request, 'get_user_input.html')
 
 
 def display_data(request):
+    user_data = UserHistory.objects.all()
     prediction_results = PredictionResult.objects.all()
-    return render(request, 'history_page.html', {'prediction_results': prediction_results})
+    return render(request, 'history_page.html', {'user_data': user_data, 'prediction_results': prediction_results})
 
 def no_results(request):
     return render(request, 'index.html' )
-
 

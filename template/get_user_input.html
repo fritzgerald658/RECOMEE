@@ -14,7 +14,7 @@
       {% csrf_token %}
       <section id="section-one">
         <!--section for course input-->
-        <label for="">Course</label><br>
+        <label for="">Course</label><br />
         <select name="course" id="courses" required>
           <option value="" selected disabled>Choose an option</option>
           <option value="Accountancy">Accountancy</option>
@@ -50,7 +50,10 @@
           </option>
           <option value="Tourism Management">Tourism Management</option>
         </select>
-        <h6 class="guides" style="color: rgb(31, 31, 31);">Specify the course or program you have completed <br>  or are currently pursuing.</h6>
+        <h6 class="guides" style="color: rgb(31, 31, 31)">
+          Specify the course or program you have completed <br />
+          or are currently pursuing.
+        </h6>
 
         <div class="custom-alert" id="course_alert">
           Please select a course.
@@ -64,11 +67,14 @@
         <label for="skills">Primary Skills</label>
         <input
           type="text"
+          required
           name="skills"
           id="skills"
           placeholder="e.g. Mobile Development, Cash Management"
         />
-        <h6 class="guides" style="color: rgb(255, 255, 255);">Identify your primary abilities or core skills you have and <br>would like to use in your career.
+        <h6 class="guides" style="color: rgb(255, 255, 255)">
+          Identify your primary abilities or core skills you have and
+          <br />would like to use in your career.
         </h6>
         <div class="custom-alert" id="skill_alert">Please type your skill.</div>
         <br />
@@ -80,12 +86,14 @@
         <label for="interest">Main Interests</label><br />
         <input
           type="text"
+          required
           id="interests"
           name="interest"
           placeholder="e.g. Web Development, Culinary Arts"
         />
-        <h6 class="guides" style="color: rgb(0, 0, 0);">Identify your main interests or ideal passions you <br>certainly want in your career.
-
+        <h6 class="guides" style="color: rgb(0, 0, 0)">
+          Identify your main interests or ideal passions you <br />certainly
+          want in your career.
         </h6>
         <div class="custom-alert" id="interest_alert">
           Please type your interests.
@@ -102,8 +110,11 @@
           required
           name="industry"
           placeholder="e.g. IT solutions, Education, Psychology"
-        /> 
-        <h6 class="guides" style="color: rgb(255, 255, 255);">Specify your preferred industry or sector <br> you envision yourself working in.</h6>
+        />
+        <h6 class="guides" style="color: rgb(255, 255, 255)">
+          Specify your preferred industry or sector <br />
+          you envision yourself working in.
+        </h6>
         <div class="custom-alert" id="industry_alert">
           Please type your preferred industry.
         </div>
@@ -116,7 +127,7 @@
     </div>
   </body>
 
-  <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
       // Add event listener to the entire document
       document.addEventListener("keydown", function (event) {
@@ -127,5 +138,5 @@
         }
       });
     });
-  </script>
+  </script> -->
 </html>
